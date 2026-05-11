@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Concept Graph</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div id="scene-root">
+    <div id="canvas-container"></div>
+    <div id="label-container"></div>
+  </div>
+
+  <!-- Top-left: search + filters -->
+  <div id="controls-tl" class="panel">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input id="search-input" type="text" placeholder="Search concepts…  ( / )" autocomplete="off" />
+      <button id="search-clear" title="Clear" aria-label="Clear search">×</button>
+    </div>
+    <div id="category-filters" class="category-filters"></div>
+  </div>
+
+  <!-- Top-right: reset -->
+  <button id="reset-view" class="panel pill-btn" title="Reset view (R)">⟲ Reset view</button>
+
+  <!-- Bottom-right: legend -->
+  <div id="legend" class="panel">
+    <div class="legend-section">
+      <div class="legend-title">Relationships</div>
+      <div id="legend-edges"></div>
+    </div>
+    <div class="legend-section">
+      <div class="legend-title">Categories</div>
+      <div id="legend-categories"></div>
+    </div>
+  </div>
+
+  <!-- Bottom-left: stats -->
+  <div id="stats" class="stats-overlay"></div>
+
+  <!-- Tooltip follows cursor -->
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Detail panel (right side) -->
+  <aside id="detail-panel" class="detail-panel" aria-hidden="true">
+    <button id="detail-close" class="detail-close" title="Close (Esc)">×</button>
+    <div class="detail-scroll">
+      <div id="detail-content"></div>
+    </div>
+  </aside>
+
+  <!-- Error overlay -->
+  <div id="error-overlay" class="error-overlay" hidden>
+    <div class="panel error-card">
+      <div class="error-title">Failed to load graph</div>
+      <div id="error-message" class="error-message">Could not reach the backend.</div>
+      <button id="error-retry" class="panel pill-btn">Retry</button>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-pulse"></div>
+    <div class="loading-text">Loading concept graph…</div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
