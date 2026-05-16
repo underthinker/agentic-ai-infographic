@@ -4,6 +4,8 @@ An interactive 3D infographic of agentic-AI concepts. Three.js frontend renders 
 clustered 3D knowledge graph; FastAPI + SQLite backend serves the data and the
 static scene from a single port.
 
+https://claude.ai/public/artifacts/8657c9f6-0966-4f4f-9d13-6c4a5f674f07
+
 ## Quick start
 
 ```bash
